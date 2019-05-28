@@ -21,7 +21,7 @@ public class PluginManager {
             Method method = ClassLoader.class.getDeclaredMethod("defineClass", String.class, byte[].class, int.class, int.class);
             method.setAccessible(true);
             byte[] array = Files.readAllBytes(file.toPath());
-            Class<?> clazz = (Class<?>) method.invoke(cl, "NewPlugin.CoolPlugin", array, 0, array.length);
+            Class<?> clazz = (Class<?>) method.invoke(cl, pluginClassName, array, 0, array.length);
             o = clazz.getDeclaredConstructor().newInstance();
         }catch(Exception e){
             System.out.println(e.getMessage());
